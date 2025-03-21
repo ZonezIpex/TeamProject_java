@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이력서 작성</title>
+    <link rel="stylesheet" href="../css관리/CreateResumeStyle.css">
+    <script src="../html관리/auth.js"></script>
+</head>
+<body>
+    <div class="main-content">
+        <!-- 공통 헤더 -->
+        <div class="header">
+            <span>커리어 요약본</span>
+            <div class="top-icons">
+                <span>⚙️</span>
+                <span onclick="location.href='PersonInformation.html'" style="cursor: pointer;">👤</span>
+                <span>☰</span>
+            </div>
+        </div>
+
+        <!-- 진행 상태 표시 바 -->
+        <div class="progress-bar">
+            <div class="progress-step active">이력서 양식</div>
+            <div class="progress-line"></div>
+            <div class="progress-step">신상 정보</div>
+            <div class="progress-line"></div>
+            <div class="progress-step">경력</div>
+            <div class="progress-line"></div>
+            <div class="progress-step">수정</div>
+            <div class="progress-line"></div>
+            <div class="progress-step">완성</div>
+        </div>
+
+        <!-- 이력서 선택 화면 -->
+        <div class="resume-selection">
+            <h2>이력서 양식 선택</h2>
+            <div class="resume-list">
+                <div class="resume-item" onclick="openModal('../css관리/images/1.png')">
+                    <img src="../css관리/images/1.png" alt="이력서 예제 1">
+                    <p>이력서 예제 1</p>
+                </div>
+                <div class="resume-item" onclick="openModal('../css관리/images/2.png')">
+                    <img src="../css관리/images/2.png" alt="이력서 예제 2">
+                    <p>이력서 예제 2</p>
+                </div>
+                <div class="resume-item" onclick="openModal('../css관리/images/3.png')">
+                    <img src="../css관리/images/3.png" alt="이력서 예제 3">
+                    <p>이력서 예제 3</p>
+                </div>
+                <div class="resume-item upload">
+                    <p>+</p>
+                    <p>첨부파일</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 모달 (팝업) -->
+        <div id="imageModal" class="modal">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <img class="modal-content" id="modalImg">
+        </div>
+
+        <!-- 두 번째 섹션: 최근 사용한 이력서 -->
+        <div class="section">
+            <h2>최근 사용</h2>
+            <div class="resume-container">
+                <div class="image-placeholder">최근 사용 1</div>
+                <div class="image-placeholder">최근 사용 2</div>
+                <div class="image-placeholder">최근 사용 3</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 푸터 -->
+    <footer>
+        <p>13916 경기도 안양시 동안구 흥안로 29 | 대표전화 : 031-467-4700</p>
+        <p>Copyright 학사누 ALL RIGHTS RESERVED</p>
+    </footer>
+
+    <script>
+        // 모달 열기 함수
+        function openModal(imageSrc) {
+            document.getElementById("imageModal").style.display = "flex";
+            document.getElementById("modalImg").src = imageSrc;
+        }
+
+        // 모달 닫기 함수
+        function closeModal() {
+            document.getElementById("imageModal").style.display = "none";
+        }
+    </script>
+</body>
+</html>

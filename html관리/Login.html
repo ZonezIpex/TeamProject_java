@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로그인</title>
+    <link rel="stylesheet" href="../css관리/LoginStyle.css">
+    <script src="../html관리/auth.js"></script>
+</head>
+<body>
+    <!-- 공통 헤더 -->
+    <div class="header">
+        <span>커리어 요약본</span>
+        <div class="top-icons">
+            <span>⚙️</span>
+            <span onclick="location.href='PersonInformation.html'" style="cursor: pointer;">👤</span>
+            <span>☰</span>
+        </div>
+    </div>
+
+    <!-- 본문 -->
+    <div class="main-content">
+        <div class="login-section">
+            <div class="login-box">
+                <h2>로그인</h2>
+                <input type="text" id="username" placeholder="아이디">
+                <input type="password" id="password" placeholder="비밀번호">
+                <button class="button primary" onclick="login()">로그인</button>
+                <button class="button secondary" onclick="location.href='Signup.html'">회원 가입</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 푸터 -->
+    <footer>
+        <p>13916 경기도 안양시 동안구 흥안로 29 | 대표전화 : 031-467-4700</p>
+        <p>Copyright 학사누 ALL RIGHTS RESERVED</p>
+    </footer>
+</body>
+</html>

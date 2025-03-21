@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원정보 수정</title>
+    <link rel="stylesheet" href="../css관리/PersonInformationStyle.css">
+    <script src="../html관리/auth.js"></script>
+</head>
+<body>
+    <!-- 공통 헤더 -->
+    <div class="header">
+        <span>커리어 요약본</span>
+        <div class="top-icons">
+            <span>⚙️</span>
+            <span onclick="location.href='PersonInformation.html'" style="cursor: pointer;">👤</span>
+            <span>☰</span>
+        </div>
+    </div>
+
+    <!-- 본문 -->
+    <div class="main-content">
+        <div class="mypage-box">
+            <h2>회원정보 수정</h2>
+            <input type="text" id="newNickname" placeholder="새 닉네임">
+            <input type="email" id="newEmail" placeholder="새 이메일">
+            <input type="password" id="currentPassword" placeholder="현재 비밀번호">
+            <input type="password" id="newPassword" placeholder="새 비밀번호">
+        <!-- 버튼 컨테이너 (수정하기, 취소, 탈퇴하기) -->
+    <div class="button-container">
+        <button class="button primary" onclick="updateUserInfo()">수정하기</button>
+        <button class="button secondary" onclick="location.href='PersonInformation.html'">취소</button>
+        <button class="button danger" onclick="deleteAccount()">탈퇴하기</button>
+    </div>
+        </div>
+    </div>
+
+
+    <!-- 푸터 -->
+    <footer>
+        <p>13916 경기도 안양시 동안구 흥안로 29 | 대표전화 : 031-467-4700</p>
+        <p>Copyright 학사누 ALL RIGHTS RESERVED</p>
+    </footer>
+
+    <script>
+        function updateUserInfo() {
+            let username = localStorage.getItem("loggedInUser");
+            if (!username) {
+                alert("로그인이 필요합니다.");
+                location.href = "Login.html";
+                return;
+            }
+
+            let userData = JSON.parse(localStorage.getItem(username));
+
+            let newNickname = document.getElementById("newNickname").value;
+            let newEmail = document.getElementById("newEmail").value;
+            let currentPassword = document.getElementById("currentPassword").value;
+            let newPassword = document.getElementById("newPassword").value;
+
+            // 현재 비밀번호 확인
+            if (currentPassword && userData.password !== currentPassword) {
+                alert("현재 비밀번호가 일치하지 않습니다.");
+                return;
+            }
+
+            // 닉네임 및 이메일 변경
+            if (newNickname) userData.nickname = newNickname;
+            if (newEmail) userData.email = newEmail;
+
+            // 비밀번호 변경
+            if (newPassword) userData.password = newPassword;
+
+            // 변경된 정보 저장
+            localStorage.setItem(username, JSON.stringify(userData));
+
+            // 전체 회원 정보 업데이트
+            let storedUsers = localStorage.getItem("loginUsers");
+            if (storedUsers) {
+                let users = JSON.parse(storedUsers);
+                let updatedUsers = users.map(user => user.username === username ? userData : user);
+                localStorage.setItem("loginUsers", JSON.stringify(updatedUsers));
+            }
+
+            alert("회원정보가 성공적으로 수정되었습니다.");
+            location.href = "PersonInformation.html"; // 마이페이지로 이동
+        }
+    </script>
+</body>
+</html>

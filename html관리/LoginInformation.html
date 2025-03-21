@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원 정보</title>
+    <link rel="stylesheet" href="../css관리/LoginStyle.css">
+</head>
+<body>
+    <!-- 공통 헤더 -->
+    <div class="header">
+        <span>커리어 요약본</span>
+        <div class="top-icons">
+            <span>⚙️</span>
+            <span onclick="location.href='PersonInformation.html'" style="cursor: pointer;">👤</span>
+            <span>☰</span>
+        </div>
+    </div>
+
+    <!-- 본문 -->
+    <div class="main-content">
+        <h2>가입된 회원 정보</h2>
+        <div id="userList"></div>
+    </div>
+
+    <!-- 푸터 -->
+    <footer>
+        <p>13916 경기도 안양시 동안구 흥안로 29 | 대표전화 : 031-467-4700</p>
+        <p>Copyright 학사누 ALL RIGHTS RESERVED</p>
+    </footer>
+
+    <script>
+        function loadUsers() {
+            let storedUsers = localStorage.getItem("loginUsers");
+            let users = storedUsers ? JSON.parse(storedUsers) : [];
+            let userList = document.getElementById("userList");
+
+            if (users.length === 0) {
+                userList.innerHTML = "<p>가입된 사용자가 없습니다.</p>";
+                return;
+            }
+
+            userList.innerHTML = "<ul>" + users.map(user =>
+                `<li><strong>아이디:</strong> ${user.username} | 
+                 <strong>닉네임:</strong> ${user.nickname} | 
+                 <strong>이메일:</strong> ${user.email} | 
+                 <strong>가입 날짜:</strong> ${user.signupDate}</li>`
+            ).join("") + "</ul>";
+        }
+
+        window.onload = loadUsers;
+    </script>
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>마이페이지</title>
+    <link rel="stylesheet" href="../css관리/PersonInformationStyle.css">
+    <script src="../html관리/auth.js"></script>
+</head>
+<body>
+    <!-- 공통 헤더 -->
+    <div class="header">
+        <span>커리어 요약본</span>
+        <div class="top-icons">
+            <span>⚙️</span>
+            <span onclick="location.href='PersonInformation.html'" style="cursor: pointer;">👤</span>
+            <span>☰</span>
+        </div>
+    </div>
+
+    <!-- 본문 -->
+    <div class="main-content">
+        <div class="mypage-box">
+            <h2>마이페이지</h2>
+
+            <!-- 프로필 박스 추가 (배경 포함) -->
+            <div class="profile-box">
+                <div class="profile-image-placeholder">프로필 사진</div>
+
+                <!-- 프로필 정보 -->
+                <div class="profile-info">
+                    <p><strong>이름:</strong> <span id="profile-name">-</span></p>
+                    <p><strong>이메일:</strong> <span id="profile-email">-</span></p>
+                    <p><strong>가입 날짜:</strong> <span id="profile-date">-</span></p>
+                </div>
+            </div>
+
+            <!-- 추가 정보 항목 -->
+            <div class="extra-info">
+                <div class="info-box">
+                    <h3>내 이력서</h3>
+                    <p>최근 작성한 이력서 확인</p>
+                    <button class="button">확인</button>
+                </div>
+
+                <!-- 회원 정보 수정 버튼 -->
+                <div class="info-box">
+                    <h3>회원 정보 수정</h3>
+                    <p>닉네임, 이메일, 비밀번호 변경</p>
+                    <button class="button" onclick="location.href='ChangeInformation.html'">수정</button>
+                </div>
+
+                <div class="info-box">
+                    <h3>로그아웃</h3>
+                    <p>현재 계정에서 로그아웃</p>
+                    <button class="button" onclick="logout()">로그아웃</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 푸터 -->
+    <footer>
+        <p>13916 경기도 안양시 동안구 흥안로 29 | 대표전화 : 031-467-4700</p>
+        <p>Copyright 학사누 ALL RIGHTS RESERVED</p>
+    </footer>
+
+    <script>
+        function logout() {
+            localStorage.removeItem("loggedInUser"); // 로그인 정보 삭제
+            alert("로그아웃 되었습니다.");
+            location.href = "Login.html"; // 로그인 화면으로 이동
+        }
+
+        function loadProfile() {
+            let username = localStorage.getItem("loggedInUser");
+            if (!username) {
+                alert("로그인이 필요합니다.");
+                location.href = "Login.html";
+                return;
+            }
+
+            let userData = JSON.parse(localStorage.getItem(username));
+            if (userData) {
+                document.getElementById("profile-name").innerText = userData.nickname;
+                document.getElementById("profile-email").innerText = userData.email;
+                document.getElementById("profile-date").innerText = userData.signupDate;
+            }
+        }
+
+        window.onload = loadProfile;
+    </script>
+
+</body>
+</html>

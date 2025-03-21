@@ -1,0 +1,170 @@
+/* 전체 페이지를 flexbox로 설정 */
+html, body {
+    height: 100vh;
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background: url('../css관리/backgroundimages/배경.png') no-repeat center center fixed;
+    background-size: cover;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+
+/* 헤더 */
+.header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: #5D9CEC;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    font-size: 16px;
+    z-index: 100;
+}
+
+/* 메인 컨테이너 (푸터 하단 고정 유지) */
+.main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-top: 70px; /* 헤더 공간 확보 */
+}
+
+/* 회원정보 수정 페이지 스타일 */
+.mypage-box input {
+    width: 90%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+/* 프로필 섹션 */
+.profile-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+/* 프로필 사진 자리 */
+.profile-image-placeholder {
+    width: 80px;
+    height: 80px;
+    background-color: #e0e0e0;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    color: #555;
+}
+
+/* 프로필 정보 */
+.profile-info {
+    flex: 1;
+    text-align: left;
+    font-size: 14px;
+}
+
+/* 프로필 박스 (배경 추가 및 크기 조정) */
+.profile-box {
+    background-color: rgba(255, 255, 255, 0.9); /* 밝은 반투명 배경 */
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.15);
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    width: 400px; /* 다른 정보 박스와 동일한 크기로 설정 */
+    min-height: 120px; /* 최소 높이 지정하여 다른 박스와 맞춤 */
+    margin: 20px auto; /* 중앙 정렬 */
+    text-align: left;
+}
+
+/* 추가 정보 항목 컨테이너 */
+.extra-info {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 400px; /* 프로필 박스 크기와 동일하게 설정 */
+}
+
+/* 정보 박스 (크기 통일) */
+.info-box {
+    background-color: #f8f8f8;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: all 0.3s ease;
+    width: 400px; /* 프로필 박스 크기와 동일하게 설정 */
+    min-height: 120px; /* 모든 박스 높이를 동일하게 맞춤 */
+}
+
+
+/* 정보 박스 hover 효과 */
+.info-box:hover {
+    background-color: #f0f0f0;
+}
+
+/* 버튼 */
+.button {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    font-size: 15px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+    background-color: #5D9CEC;
+    color: white;
+}
+
+.button:hover {
+    background-color: #4A8CD4;
+    transform: scale(1.03);
+}
+
+/* 버튼 컨테이너 (수정하기, 취소 버튼 위치 조정) */
+.button-container {
+    display: flex;
+    justify-content: flex-end; /* 오른쪽 정렬 */
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.button-container .button {
+    width: auto;
+    padding: 12px 20px;
+}
+
+/* 탈퇴 버튼 스타일 */
+.button.danger {
+    background-color: #d9534f;
+    color: white;
+}
+
+.button.danger:hover {
+    background-color: #c9302c;
+}
+
+
+/* 푸터 (항상 화면 하단 유지) */
+footer {
+    background-color: #333;
+    color: white;
+    padding: 15px;
+    text-align: center;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+}

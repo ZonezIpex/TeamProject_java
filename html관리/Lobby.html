@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이력서 도우미</title>
+    <link rel="stylesheet" href="../css관리/LobbyStyle.css">
+    <script src="../html관리/auth.js"></script>
+</head>
+<body>
+    <!-- 공통 헤더 -->
+    <!-- 공통 헤더 -->
+<div class="header">
+    <span>커리어 요약본</span>
+    <div class="top-icons">
+        <span>⚙️</span>
+        <span onclick="checkLoginForProfile()" style="cursor: pointer;">👤</span>
+        <span>☰</span>
+    </div>
+</div>
+
+
+    <!-- 첫 번째 섹션 -->
+    <div class="section_main">
+        <h1>이력서 초기 작성 도우미를 통해<br>작성에 도움을 받으세요</h1>
+        <p>~이력서 작성해보세요~</p>
+        <!-- 이력서 작성 버튼 -->
+        <button class="button" onclick="checkLoginForResume()">이력서 작성하기</button>
+
+        <script>
+            function checkLoginForResume() {
+                let loggedInUser = localStorage.getItem("loggedInUser");
+                if (!loggedInUser) {
+                    alert("로그인이 필요합니다.");
+                    location.href = "Login.html"; // 로그인 페이지로 이동
+                } else {
+                    location.href = "CreateResume.html"; // 로그인되어 있으면 이력서 작성 페이지로 이동
+                }
+            }
+
+            function checkLoginForProfile() {
+                let loggedInUser = localStorage.getItem("loggedInUser");
+                if (!loggedInUser) {
+                    alert("로그인이 필요합니다.");
+                    location.href = "Login.html"; // 로그인 페이지로 이동
+                } else {
+                    location.href = "PersonInformation.html"; // 로그인되어 있으면 마이페이지로 이동
+                }
+            }
+        </script>
+    </div>
+
+    <!-- 두 번째 섹션: 이력서 비교 (복원) -->
+    <div class="section_middle">
+        <h2>이력서 비교</h2>
+        <div class="resume-compare">
+            <div class="image-placeholder">이력서 1</div>
+            <div class="image-placeholder">이력서 2</div>
+        </div>
+    </div>
+
+    <!-- 세 번째 섹션: 리뷰 (복원) -->
+    <div class="section_footer">
+        <h2>리뷰</h2>
+        <div class="review-container">
+            <div class="review-box">
+                <div class="image-placeholder small"></div>
+                <p>⭐⭐⭐⭐⭐</p>
+                <p>진짜 최고의 이력서</p>
+            </div>
+            <div class="review-box">
+                <div class="image-placeholder small"></div>
+                <p>⭐⭐⭐⭐⭐</p>
+                <p>이력서 작성이 쉬웠어요!</p>
+            </div>
+            <div class="review-box">
+                <div class="image-placeholder small"></div>
+                <p>⭐⭐⭐⭐⭐</p>
+                <p>추천합니다!</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 푸터 -->
+    <footer>
+        <p>13916 경기도 안양시 동안구 흥안로 29 | 대표전화 : 031-467-4700</p>
+        <p>Copyright 학사누 ALL RIGHTS RESERVED</p>
+    </footer>
+</body>
+</html>
